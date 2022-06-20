@@ -1,86 +1,28 @@
-var exports = {};
-
-function add(n1: number, n2: number, showResult: boolean, phrase: string) {
-  /* if (typeof n1 !== "number" || typeof n2 !== "number") {
-    throw new Error("Incorrect input!");
-  } */
-
-  //EXAMPLE 1
-  const result = n1 + n2; //To make the result only a number
-  if (showResult) {
-    console.log(phrase + result); //If we use phrase + n1 + n2 the result is a String
+function combine(
+  input1: number | string,
+  input2: number | string,
+  resultConversion: string
+) {
+  //Union types "|"
+  //Combine numbers and strings
+  let result;
+  if (
+    (typeof input1 === "number" && typeof input2 === "number") ||
+    resultConversion === "as-number"
+  ) {
+    result = input1 + input2; //To make the result only a number
   } else {
-    //If showResult = false -> return n1 + n2
-    return n1 + n2;
+    result = input1.toString() + input2.toString();
   }
+  if (resultConversion === "as-number") {
+    return +result; //parseFloat(result)
+    console.log("hola");
+  }
+  return result.toString();
 }
 
-let number1: number; // 5.0
-number1 = 5;
+const combinedStringAges = combine(30, 26, "as-number");
+console.log(combinedStringAges);
 
-const number2 = 2.8;
-const printResult = true;
-let resultPhrase = "Result is: ";
-
-//console.log(typeof number1);
-
-//const result = add(number1, number2, printResult);
-//console.log(result);
-
-add(number1, number2, printResult, resultPhrase);
-
-//EXAMPLE 2
-/* const person: {
-  // {} the empty curly braces mean the same as an object, we have to fill them
-  name: string;
-  age: number;
-} = { */
-/*const person: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: [number, string]; //tuple
-} = {
-  //Object
-  name: "Sara",
-  age: 26,
-  hobbies: ["Sports", "Cooking"], //Array
-  role: [2, "author"],
-}; */
-
-const ADMIN = 0;
-const READ_ONLY = 1;
-const AUTHOR = 2;
-
-enum Role {
-  ADMIN = "ADMIN", //I can assign the value that I want with an "=". If I put a 5 the result will be 5, 6 and 7
-  READ_ONLY = 100,
-  AUTHOR = 200,
-}
-
-const person = {
-  name: "Sara",
-  age: 26,
-  hobbies: ["Sports", "Cooking"], //Array
-  role: Role.ADMIN, //Enum
-};
-
-//person.role.push("admin");
-//person.role[1] = 10;
-//person.role = [0, 'admin', 'user'];
-
-let favoriteActivities: string[];
-favoriteActivities = ["Sports"];
-
-console.log(person.name);
-
-//For loop
-for (const hobby of person.hobbies) {
-  console.log(hobby.toUpperCase);
-  // console.log(hobby.map()); // ERROR!!
-}
-
-if (person.role === Role.AUTHOR) {
-  //To avoid problems writing READ-ONLY-USER / READ ONLY / ETC. Possible mistakes
-  console.log("is author");
-}
+const combinedNames = combine("30", "26", "as-text");
+console.log(combinedNames);
