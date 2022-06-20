@@ -43,11 +43,17 @@ add(number1, number2, printResult, resultPhrase);
 var ADMIN = 0;
 var READ_ONLY = 1;
 var AUTHOR = 2;
+var Role;
+(function (Role) {
+    Role["ADMIN"] = "ADMIN";
+    Role[Role["READ_ONLY"] = 100] = "READ_ONLY";
+    Role[Role["AUTHOR"] = 200] = "AUTHOR";
+})(Role || (Role = {}));
 var person = {
     name: "Sara",
     age: 26,
     hobbies: ["Sports", "Cooking"],
-    role: ADMIN
+    role: Role.ADMIN
 };
 //person.role.push("admin");
 //person.role[1] = 10;
@@ -61,7 +67,7 @@ for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
     console.log(hobby.toUpperCase);
     // console.log(hobby.map()); // ERROR!!
 }
-if (person.role === ADMIN) {
+if (person.role === Role.AUTHOR) {
     //To avoid problems writing READ-ONLY-USER / READ ONLY / ETC. Possible mistakes
-    console.log("is admin");
+    console.log("is author");
 }
