@@ -28,15 +28,40 @@ add(number1, number2, printResult, resultPhrase);
   name: string;
   age: number;
 } = { */
+/*const person: {
+  name: string;
+  age: number;
+  hobbies: string[];
+  role: [number, string]; //tuple
+} = {
+  //Object
+  name: "Sara",
+  age: 26,
+  hobbies: ["Sports", "Cooking"], //Array
+  role: [2, "author"],
+}; */
+var ADMIN = 0;
+var READ_ONLY = 1;
+var AUTHOR = 2;
 var person = {
     name: "Sara",
     age: 26,
-    hobbies: ["Sports", "Cooking"]
+    hobbies: ["Sports", "Cooking"],
+    role: ADMIN
 };
+//person.role.push("admin");
+//person.role[1] = 10;
+//person.role = [0, 'admin', 'user'];
 var favoriteActivities;
 favoriteActivities = ["Sports"];
 console.log(person.name);
+//For loop
 for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
     var hobby = _a[_i];
-    console.log(hobby);
+    console.log(hobby.toUpperCase);
+    // console.log(hobby.map()); // ERROR!!
+}
+if (person.role === ADMIN) {
+    //To avoid problems writing READ-ONLY-USER / READ ONLY / ETC. Possible mistakes
+    console.log("is admin");
 }
