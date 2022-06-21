@@ -1,3 +1,4 @@
+"use strict";
 var exports = {};
 //EXAMPLE 2
 /* const person: {
@@ -26,21 +27,20 @@ var Role;
     Role[Role["READ_ONLY"] = 100] = "READ_ONLY";
     Role[Role["AUTHOR"] = 200] = "AUTHOR";
 })(Role || (Role = {}));
-var person = {
+const person = {
     name: "Sara",
     age: 26,
     hobbies: ["Sports", "Cooking"],
-    role: Role.ADMIN
+    role: Role.ADMIN, //Enum
 };
 //person.role.push("admin");
 //person.role[1] = 10;
 //person.role = [0, 'admin', 'user'];
-var favoriteActivities; //If I use "any" is the same as vanilla Javascript
+let favoriteActivities; //If I use "any" is the same as vanilla Javascript
 favoriteActivities = ["Sports"];
 console.log(person.name);
 //For loop
-for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
-    var hobby = _a[_i];
+for (const hobby of person.hobbies) {
     console.log(hobby.toUpperCase);
     // console.log(hobby.map()); // ERROR!!
 }
