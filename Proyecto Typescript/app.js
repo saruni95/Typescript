@@ -1,21 +1,14 @@
-function combine(input1, input2, resultConversion) {
-    //Union types "|"
-    //Combine numbers and strings
-    var result;
-    if ((typeof input1 === "number" && typeof input2 === "number") ||
-        resultConversion === "as-number") {
-        result = input1 + input2; //To make the result only a number
-    }
-    else {
-        result = input1.toString() + input2.toString();
-    }
-    if (resultConversion === "as-number") {
-        return +result; //parseFloat(result)
-        console.log("hola");
-    }
-    return result.toString();
+var userInput; // string | number
+var userName;
+userInput = 5;
+userInput = "Sara";
+if (typeof userInput === "string") {
+    //Condition to use unknwown
+    userName = userInput;
 }
-var combinedStringAges = combine(30, 26, "as-number");
-console.log(combinedStringAges);
-var combinedNames = combine("30", "26", "as-text");
-console.log(combinedNames);
+//string is not "unknown" but it works if it is "any"
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
+}
+var result = generateError("An error occurred!", 500);
+console.log(result);
